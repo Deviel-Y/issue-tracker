@@ -1,20 +1,14 @@
-import authOption from "@/app/api/auth/AuthOptions";
 import Signup from "@/public/signup.jpg";
-import { Flex, Grid, Text } from "@radix-ui/themes";
-import { getServerSession } from "next-auth";
+import { Grid } from "@radix-ui/themes";
 import Image from "next/image";
 import SignUpForm from "./SignUpForm";
+import { getServerSession } from "next-auth";
+import authOption from "@/app/api/auth/AuthOptions";
+import { permanentRedirect } from "next/navigation";
 
 const SignUpPage = async () => {
   const session = await getServerSession(authOption);
-  if (session)
-    return (
-      <Flex justify="center" align="center">
-        <Text className="font-medium text-4xl">
-          You have logged-in so you cannot access this page
-        </Text>
-      </Flex>
-    );
+  if (session) permanentRedirect("/");
 
   return (
     <Grid align="center" columns={{ initial: "1", sm: "2" }}>

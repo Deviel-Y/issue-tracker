@@ -26,7 +26,6 @@ import {
   AiOutlineEye,
   AiOutlineLock,
   AiOutlineMail,
-  AiOutlineUser,
 } from "react-icons/ai";
 import { z } from "zod";
 
@@ -48,7 +47,6 @@ const SignUpForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(authenticationSchema) });
 
