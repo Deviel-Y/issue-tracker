@@ -19,6 +19,7 @@
     "@uploadthing/react": "^6.5.1",
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
+    "delay": "^6.0.0",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
     "prisma": "^5.13.0",

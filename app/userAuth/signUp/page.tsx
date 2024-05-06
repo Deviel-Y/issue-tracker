@@ -1,10 +1,10 @@
+import authOption from "@/app/api/auth/AuthOptions";
 import Signup from "@/public/signup.jpg";
 import { Grid } from "@radix-ui/themes";
-import Image from "next/image";
-import SignUpForm from "./SignUpForm";
 import { getServerSession } from "next-auth";
-import authOption from "@/app/api/auth/AuthOptions";
+import Image from "next/image";
 import { permanentRedirect } from "next/navigation";
+import SignUpForm from "./SignUpForm";
 
 const SignUpPage = async () => {
   const session = await getServerSession(authOption);
