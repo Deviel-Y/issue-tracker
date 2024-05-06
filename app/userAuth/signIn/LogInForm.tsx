@@ -164,10 +164,12 @@ const ForgotPasswordPopOver = () => {
 
   const { register, watch } = useForm();
 
-  const insertedEmail = watch("email", "");
+  const insertedEmail: string = watch("email", "");
   const insertedPassword = watch("password", "");
 
-  const user = users?.find((user) => user.email === insertedEmail);
+  const user = users?.find(
+    (user) => user.email === insertedEmail.toLowerCase()
+  );
 
   return (
     <Popover.Root>
@@ -224,7 +226,9 @@ const ForgotPasswordPopOver = () => {
             <Button
               onClick={(event) => {
                 event.preventDefault();
-                user ? setEmailChecked(true) : setEmailChecked(false);
+                user?.email && user.hashedPassword
+                  ? setEmailChecked(true)
+                  : setEmailChecked(false);
               }}
               radius="full"
               className="!transition-all !cursor-pointer"

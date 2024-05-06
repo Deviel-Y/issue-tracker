@@ -1,6 +1,6 @@
 "use client";
 
-import { authenticationSchema } from "@/app/validationSchema";
+import { signUpSchema } from "@/app/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Box,
@@ -42,13 +42,13 @@ const SignUpForm = () => {
     confirmationPassword: false,
   });
 
-  type FormData = z.infer<typeof authenticationSchema>;
+  type FormData = z.infer<typeof signUpSchema>;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(authenticationSchema) });
+  } = useForm<FormData>({ resolver: zodResolver(signUpSchema) });
 
   const onFormSumittion = handleSubmit(
     async (data) =>

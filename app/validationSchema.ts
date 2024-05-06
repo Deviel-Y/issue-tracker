@@ -17,7 +17,7 @@ export const issueSchemaPatch = z.object({
     .nullable(),
 });
 
-export const authenticationSchema = z
+export const signUpSchema = z
   .object({
     email: z.string().min(2).max(50).email(),
     password: z
@@ -62,4 +62,9 @@ export const patchUserSchema = z.object({
       message: "Password must contain at least one lowercase letter",
     })
     .regex(/[0-9]/, { message: "Password must contain at least one number" }),
+});
+
+export const signInBodySchema = z.object({
+  email: z.string().email().max(50),
+  password: z.string().max(200).min(3),
 });
