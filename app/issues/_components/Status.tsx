@@ -12,6 +12,7 @@ import {
 import { signOut, useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { AiOutlineUser } from "react-icons/ai";
+import { useUsers } from "../[id]/AssigneeSelect";
 
 const Status = () => {
   return (
@@ -26,6 +27,10 @@ const SmallScreenUserCard = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const currentPath = usePathname();
+
+  const { data: users } = useUsers();
+
+  const user = users?.find((user) => user.email === session?.user?.email);
 
   return (
     <Text className="lg:hidden">
@@ -51,10 +56,10 @@ const SmallScreenUserCard = () => {
                 </Text>
               </Flex>
             </Flex>
-            {currentPath !== "/userAuth/userInfo" && (
+            {currentPath !== `/userAuth/userInfo/${user?.id}` && (
               <Button
                 color="cyan"
-                onClick={() => router.push("/userAuth/userInfo")}
+                onClick={() => router.push(`/userAuth/userInfo/${user?.id}`)}
                 className="!cursor-pointer"
               >
                 User Info
@@ -72,6 +77,10 @@ const ShowHoverCard = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const currentPath = usePathname();
+
+  const { data: users } = useUsers();
+
+  const user = users?.find((user) => user.email === session?.user?.email);
 
   return (
     <Text className="max-lg:hidden">
@@ -97,10 +106,10 @@ const ShowHoverCard = () => {
                 </Text>
               </Flex>
             </Flex>
-            {currentPath !== "/userAuth/userInfo" && (
+            {currentPath !== `/userAuth/userInfo/${user?.id}` && (
               <Button
                 color="cyan"
-                onClick={() => router.push("/userAuth/userInfo")}
+                onClick={() => router.push(`/userAuth/userInfo/${user?.id}`)}
                 className="!cursor-pointer"
               >
                 User Info

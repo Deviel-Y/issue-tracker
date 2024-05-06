@@ -53,7 +53,7 @@ const SignUpForm = () => {
   const onFormSumittion = handleSubmit(
     async (data) =>
       await axios
-        .post("/api/auth/register", data)
+        .post("/api/user", data)
         .then(async () => {
           await signIn("credentials", data);
         })
