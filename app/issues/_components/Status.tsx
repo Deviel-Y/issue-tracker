@@ -10,6 +10,7 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { signOut, useSession } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
 import { AiOutlineUser } from "react-icons/ai";
 
 const Status = () => {
@@ -23,6 +24,8 @@ const Status = () => {
 
 const SmallScreenUserCard = () => {
   const { data: session } = useSession();
+  const router = useRouter();
+  const currentPath = usePathname();
 
   return (
     <Text className="lg:hidden">
@@ -48,6 +51,15 @@ const SmallScreenUserCard = () => {
                 </Text>
               </Flex>
             </Flex>
+            {currentPath !== "/userAuth/userInfo" && (
+              <Button
+                color="cyan"
+                onClick={() => router.push("/userAuth/userInfo")}
+                className="!cursor-pointer"
+              >
+                User Info
+              </Button>
+            )}
             <SignOutConfirmation />
           </Flex>
         </Popover.Content>
@@ -58,6 +70,8 @@ const SmallScreenUserCard = () => {
 
 const ShowHoverCard = () => {
   const { data: session } = useSession();
+  const router = useRouter();
+  const currentPath = usePathname();
 
   return (
     <Text className="max-lg:hidden">
@@ -83,6 +97,15 @@ const ShowHoverCard = () => {
                 </Text>
               </Flex>
             </Flex>
+            {currentPath !== "/userAuth/userInfo" && (
+              <Button
+                color="cyan"
+                onClick={() => router.push("/userAuth/userInfo")}
+                className="!cursor-pointer"
+              >
+                User Info
+              </Button>
+            )}
             <SignOutConfirmation />
           </Flex>
         </HoverCard.Content>
