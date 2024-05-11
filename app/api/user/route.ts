@@ -1,7 +1,7 @@
-import { signInBodySchema, signUpSchema } from "@/app/validationSchema";
+import { signUpSchema } from "@/app/validationSchema";
 import prisma from "@/prisma/client";
-import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
+import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 export const GET = async (request: NextRequest) => {
@@ -16,14 +16,16 @@ export const GET = async (request: NextRequest) => {
 };
 
 export const POST = async (request: NextRequest) => {
-  type signInBodyType = z.infer<typeof signInBodySchema>;
-  const body: signInBodyType = await request.json();
+  type SignUpSchema = z.infer<typeof signUpSchema>;
+
+  const body: SignUpSchema = await request.json();
+  const { email, password, fullname } = body;
 
   const validation = signUpSchema.safeParse(body);
   if (!validation.success)
     return NextResponse.json(validation.error.format(), { status: 400 });
 
-  const user = await prisma.user.findUnique({ where: { email: body.email } });
+  const user = await prisma.user.findUnique({ where: { email } });
 
   if (user)
     return NextResponse.json(
@@ -31,10 +33,10 @@ export const POST = async (request: NextRequest) => {
       { status: 400 }
     );
 
-  const hashedPassword = await bcrypt.hash(body.password, 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
 
   const newUser = await prisma.user.create({
-    data: { email: body.email.toLowerCase(), hashedPassword },
+    data: { email: email.toLowerCase(), hashedPassword, name: fullname },
   });
 
   return NextResponse.json(newUser.email);

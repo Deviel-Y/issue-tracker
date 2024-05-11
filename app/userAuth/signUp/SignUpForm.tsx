@@ -26,6 +26,7 @@ import {
   AiOutlineEye,
   AiOutlineLock,
   AiOutlineMail,
+  AiOutlineUser,
 } from "react-icons/ai";
 import { z } from "zod";
 
@@ -68,6 +69,26 @@ const SignUpForm = () => {
             <Heading as="h1" size="8">
               Sign Up
             </Heading>
+
+            <Box className="w-full">
+              <Text className="text-[15px]" as="label">
+                Fullname
+              </Text>
+              <TextField.Root
+                {...register("fullname")}
+                className="transition-all"
+                type="text"
+                size="3"
+                radius="large"
+              >
+                <TextField.Slot>
+                  <AiOutlineUser />
+                </TextField.Slot>
+              </TextField.Root>
+              {errors.fullname && (
+                <Text color="red">{errors.fullname.message}</Text>
+              )}
+            </Box>
 
             <Box className="w-full">
               <Text className="text-[15px]" as="label">

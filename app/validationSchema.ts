@@ -20,6 +20,10 @@ export const issueSchemaPatch = z.object({
 export const signUpSchema = z
   .object({
     email: z.string().min(2).max(50).email(),
+    fullname: z
+      .string()
+      .min(1, "Fullname is required")
+      .regex(/\s/, { message: "Enter you're fullname" }),
     password: z
       .string()
       .min(3)
@@ -62,9 +66,4 @@ export const patchUserSchema = z.object({
       message: "Password must contain at least one lowercase letter",
     })
     .regex(/[0-9]/, { message: "Password must contain at least one number" }),
-});
-
-export const signInBodySchema = z.object({
-  email: z.string().email().max(50),
-  password: z.string().max(200).min(3),
 });
