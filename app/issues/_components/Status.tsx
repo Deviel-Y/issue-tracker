@@ -56,15 +56,7 @@ const SmallScreenUserCard = () => {
                 </Text>
               </Flex>
             </Flex>
-            {currentPath !== `/userAuth/userInfo/${user?.id}` && (
-              <Button
-                color="cyan"
-                onClick={() => router.push(`/userAuth/userInfo/${user?.id}`)}
-                className="!cursor-pointer"
-              >
-                User Info
-              </Button>
-            )}
+
             <SignOutConfirmation />
           </Flex>
         </Popover.Content>
