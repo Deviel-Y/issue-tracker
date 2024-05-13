@@ -1,7 +1,7 @@
 "use client";
 
 import { Issue, Status } from "@prisma/client";
-import { Select } from "@radix-ui/themes";
+import { Select, Text } from "@radix-ui/themes";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
@@ -38,6 +38,7 @@ const ChangeStatusSelect = ({ issues, issueId }: Props) => {
         <Select.Trigger placeholder="Change Status" />
         <Select.Content>
           <Select.Group>
+            <Select.Label>Status Select</Select.Label>
             {statuses?.map((status) => (
               <Select.Item value={status.value} key={status.value}>
                 {status.label}

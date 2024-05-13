@@ -10,7 +10,7 @@ export interface IssueQuery {
   statusFilter: Status;
   orderByFilter: keyof Issue;
   pageNumber: string;
-  search?: string;
+  search: string;
 }
 
 interface Props {

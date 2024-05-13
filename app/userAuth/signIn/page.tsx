@@ -5,6 +5,7 @@ import LogInForm from "./LogInForm";
 import authOption from "@/app/api/auth/AuthOptions";
 import { getServerSession } from "next-auth";
 import { permanentRedirect } from "next/navigation";
+import { Metadata } from "next";
 
 const CustomSignInPage = async () => {
   const session = await getServerSession(authOption);
@@ -20,6 +21,10 @@ const CustomSignInPage = async () => {
       <LogInForm />
     </Grid>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Issue Tracker - Sign in",
 };
 
 export const dynamic = "force-static";

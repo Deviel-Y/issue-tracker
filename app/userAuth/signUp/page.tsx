@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { permanentRedirect } from "next/navigation";
 import SignUpForm from "./SignUpForm";
+import { Metadata } from "next";
 
 const SignUpPage = async () => {
   const session = await getServerSession(authOption);
@@ -20,6 +21,10 @@ const SignUpPage = async () => {
       <SignUpForm />
     </Grid>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Issue Tracker - Sign Up",
 };
 
 export const dynamic = "force-static";
