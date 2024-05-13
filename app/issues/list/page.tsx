@@ -11,7 +11,7 @@ interface Props {
 }
 
 const IssuesPage = async ({
-  searchParams: { statusFilter, orderByFilter, pageNumber },
+  searchParams: { statusFilter, orderByFilter, pageNumber, search },
 }: Props) => {
   const statuses = Object.values(Status);
   const status = statuses.includes(statusFilter) ? statusFilter : undefined;
@@ -24,7 +24,7 @@ const IssuesPage = async ({
   const page = parseInt(pageNumber) || 1;
 
   const issues: Issue[] = await prisma.issue.findMany({
-    where: { status },
+    where: { status, title: { contains: search } },
     orderBy,
     skip: (page - 1) * pageSize,
     take: pageSize,
@@ -37,7 +37,7 @@ const IssuesPage = async ({
       <IssueAction />
       <IssueTable
         issues={issues}
-        searchParams={{ orderByFilter, pageNumber, statusFilter }}
+        searchParams={{ orderByFilter, pageNumber, statusFilter, search }}
       />
       <Pagination
         currentPage={page}
