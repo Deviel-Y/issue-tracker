@@ -22,4 +22,6 @@ const SignUpPage = async () => {
   );
 };
 
+export const dynamic = "force-static";
+
 export default SignUpPage;

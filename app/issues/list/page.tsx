@@ -39,7 +39,7 @@ const IssuesPage = async ({
       <IssueAction />
       <IssueTable
         issues={issues}
-        searchParams={{ orderByFilter, pageNumber, statusFilter }}
+        searchParams={{ orderByFilter, pageNumber, statusFilter, search }}
       />
       {issues.length !== 0 && (
         <Pagination

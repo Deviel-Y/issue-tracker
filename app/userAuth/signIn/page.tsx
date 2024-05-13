@@ -22,4 +22,6 @@ const CustomSignInPage = async () => {
   );
 };
 
+export const dynamic = "force-static";
+
 export default CustomSignInPage;
