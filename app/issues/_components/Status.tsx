@@ -25,12 +25,6 @@ const Status = () => {
 
 const SmallScreenUserCard = () => {
   const { data: session } = useSession();
-  const router = useRouter();
-  const currentPath = usePathname();
-
-  const { data: users } = useUsers();
-
-  const user = users?.find((user) => user.email === session?.user?.email);
 
   return (
     <Text className="lg:hidden">
@@ -67,12 +61,8 @@ const SmallScreenUserCard = () => {
 
 const ShowHoverCard = () => {
   const { data: session } = useSession();
-  const router = useRouter();
-  const currentPath = usePathname();
 
   const { data: users } = useUsers();
-
-  const user = users?.find((user) => user.email === session?.user?.email);
 
   return (
     <Text className="max-lg:hidden">
@@ -98,15 +88,7 @@ const ShowHoverCard = () => {
                 </Text>
               </Flex>
             </Flex>
-            {currentPath !== `/userAuth/userInfo/${user?.id}` && (
-              <Button
-                color="cyan"
-                onClick={() => router.push(`/userAuth/userInfo/${user?.id}`)}
-                className="!cursor-pointer"
-              >
-                User Info
-              </Button>
-            )}
+
             <SignOutConfirmation />
           </Flex>
         </HoverCard.Content>
