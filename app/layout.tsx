@@ -1,11 +1,11 @@
-import "@uploadthing/react/styles.css";
+import { Container, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import "@uploadthing/react/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import AuthProvider from "./AuthProvider";
 import "./globals.css";
 import Navbar from "./Navbar";
-import { Container, Theme } from "@radix-ui/themes";
-import AuthProvider from "./AuthProvider";
 import QueryClientProvider from "./QueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });

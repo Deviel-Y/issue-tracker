@@ -1,9 +1,9 @@
 import { issueSchemaPatch } from "@/app/validationSchema";
+import prisma from "@/prisma/client";
+import { Issue } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import AuthOptions from "../../auth/AuthOptions";
-import prisma from "@/prisma/client";
-import { Issue } from "@prisma/client";
 
 interface Props {
   params: { id: string };

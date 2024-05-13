@@ -1,7 +1,7 @@
 "use client";
 
 import { Issue, Status } from "@prisma/client";
-import { Select, Text } from "@radix-ui/themes";
+import { Select } from "@radix-ui/themes";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";

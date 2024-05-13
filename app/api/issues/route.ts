@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
-import { issueSchema } from "../../validationSchema";
-import { getServerSession } from "next-auth";
-import AuthOptions from "../auth/AuthOptions";
 import prisma from "@/prisma/client";
 import { Issue } from "@prisma/client";
+import { getServerSession } from "next-auth";
+import { NextRequest, NextResponse } from "next/server";
+import { issueSchema } from "../../validationSchema";
+import AuthOptions from "../auth/AuthOptions";
 
 export const GET = async (request: NextRequest) => {
   const issues = await prisma.issue.findMany();

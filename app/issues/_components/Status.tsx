@@ -10,7 +10,6 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { signOut, useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
 import { AiOutlineUser } from "react-icons/ai";
 import { useUsers } from "../[id]/AssigneeSelect";
 

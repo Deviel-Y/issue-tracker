@@ -1,5 +1,4 @@
 import { Box, Card, Flex } from "@radix-ui/themes";
-import React from "react";
 import Skeleton from "react-loading-skeleton";
 
 const FormSkeleton = () => {

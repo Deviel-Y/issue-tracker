@@ -1,7 +1,7 @@
 import "easymde/dist/easymde.min.css";
+import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import IssueFormSkeleton from "../_components/IssueFormSkeleton";
-import { Metadata } from "next";
 
 const CreateNewPage = async () => {
   const IssueForm = dynamic(
