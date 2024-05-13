@@ -9,7 +9,7 @@ import bcrypt from "bcrypt";
 const authOption: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
 
-  session: { strategy: "jwt" },
+  session: { strategy: "jwt", maxAge: 6 * 60 * 60 }, //1 Day
 
   callbacks: {
     async redirect({ url, baseUrl }) {
@@ -29,7 +29,7 @@ const authOption: NextAuthOptions = {
       credentials: {
         email: {
           label: "Email",
-          placeholder: "yourEmail@exmaple.com",
+          placeholder: "yourEmail@example.com",
           type: "email",
         },
         password: { label: "Password", type: "password" },
