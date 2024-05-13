@@ -19,7 +19,7 @@ export const POST = async (request: NextRequest) => {
   type SignUpSchema = z.infer<typeof signUpSchema>;
 
   const body: SignUpSchema = await request.json();
-  const { email, password, fullname } = body;
+  const { email, password, firstname, lastname } = body;
 
   const validation = signUpSchema.safeParse(body);
   if (!validation.success)
@@ -34,6 +34,8 @@ export const POST = async (request: NextRequest) => {
     );
 
   const hashedPassword = await bcrypt.hash(password, 10);
+
+  const fullname = `${firstname} ${lastname}`;
 
   const newUser = await prisma.user.create({
     data: { email: email.toLowerCase(), hashedPassword, name: fullname },

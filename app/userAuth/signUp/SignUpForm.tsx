@@ -27,6 +27,7 @@ import {
   AiOutlineLock,
   AiOutlineMail,
   AiOutlineUser,
+  AiOutlineUserAdd,
 } from "react-icons/ai";
 import { z } from "zod";
 
@@ -70,25 +71,51 @@ const SignUpForm = () => {
               Sign Up
             </Heading>
 
-            <Box className="w-full">
-              <Text className="text-[15px]" as="label">
-                Fullname
-              </Text>
-              <TextField.Root
-                {...register("fullname")}
-                className="transition-all"
-                type="text"
-                size="3"
-                radius="large"
-              >
-                <TextField.Slot>
-                  <AiOutlineUser />
-                </TextField.Slot>
-              </TextField.Root>
-              {errors.fullname && (
-                <Text color="red">{errors.fullname.message}</Text>
-              )}
-            </Box>
+            <Flex
+              className="w-full"
+              gap="3"
+              direction={{ initial: "column", md: "row" }}
+            >
+              <Box>
+                <Text className="text-[15px]" as="label">
+                  First Name
+                </Text>
+                <TextField.Root
+                  {...register("firstname")}
+                  className="transition-all"
+                  type="text"
+                  size="3"
+                  radius="large"
+                >
+                  <TextField.Slot>
+                    <AiOutlineUser />
+                  </TextField.Slot>
+                </TextField.Root>
+                {errors.firstname && (
+                  <Text color="red">{errors.firstname.message}</Text>
+                )}
+              </Box>
+
+              <Box>
+                <Text className="text-[15px]" as="label">
+                  Last Name
+                </Text>
+                <TextField.Root
+                  {...register("lastname")}
+                  className="transition-all"
+                  type="text"
+                  size="3"
+                  radius="large"
+                >
+                  <TextField.Slot>
+                    <AiOutlineUserAdd />
+                  </TextField.Slot>
+                </TextField.Root>
+                {errors.lastname && (
+                  <Text color="red">{errors.lastname.message}</Text>
+                )}
+              </Box>
+            </Flex>
 
             <Box className="w-full">
               <Text className="text-[15px]" as="label">

@@ -20,10 +20,8 @@ export const issueSchemaPatch = z.object({
 export const signUpSchema = z
   .object({
     email: z.string().min(2).max(50).email(),
-    fullname: z
-      .string()
-      .min(1, "Fullname is required")
-      .regex(/\s/, { message: "Enter you're fullname" }),
+    firstname: z.string().min(1, "Firstname is required"),
+    lastname: z.string().min(1, "Lastname is required"),
     password: z
       .string()
       .min(3)
