@@ -30,20 +30,24 @@ const IssuesPage = async ({
     take: pageSize,
   });
 
-  const issueCount = await prisma.issue.count({ where: { status } });
+  const issueCount = await prisma.issue.count({
+    where: { status, title: { contains: search } },
+  });
 
   return (
     <Flex gap="3" direction="column">
       <IssueAction />
       <IssueTable
         issues={issues}
-        searchParams={{ orderByFilter, pageNumber, statusFilter, search }}
+        searchParams={{ orderByFilter, pageNumber, statusFilter }}
       />
-      <Pagination
-        currentPage={page}
-        itemCount={issueCount}
-        pageSize={pageSize}
-      />
+      {issues.length !== 0 && (
+        <Pagination
+          currentPage={page}
+          itemCount={issueCount}
+          pageSize={pageSize}
+        />
+      )}
     </Flex>
   );
 };

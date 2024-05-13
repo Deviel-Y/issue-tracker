@@ -20,7 +20,7 @@ interface Props {
 
 const IssueTable = ({
   issues,
-  searchParams: { orderByFilter, pageNumber, statusFilter, search },
+  searchParams: { orderByFilter, pageNumber, statusFilter },
 }: Props) => {
   return (
     <>
@@ -39,7 +39,6 @@ const IssueTable = ({
                         orderByFilter: column.value,
                         statusFilter,
                         pageNumber,
-                        search,
                       },
                     }}
                   >
