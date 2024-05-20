@@ -19,8 +19,6 @@ const IssueStatusFilter = () => {
 
     if (status) param.append("statusFilter", status);
 
-    if (status === "ALL_ISSUES") param.delete("statusFilter");
-
     if (searchParams.get("orderByFilter"))
       param.append("orderByFilter", searchParams.get("orderByFilter")!);
 
